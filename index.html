@@ -2,78 +2,76 @@
 <html lang="en-us">
 
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+  <meta charset="UTF-8">
+  <title>Jacascript Homework</title>
 </head>
 
-<body ng-app="rxApp">
+<body>
+
+  <div>
+    <p id="directions-text">Guess what letter I'm thinking of!</p>
+    <p id="userchoice-text"></p>
+    <p id="computerchoice-text"></p>
+    <p id="wins-text"></p>
+    <p id="losses-text"></p>
+    <p id="guessesLeft-text"></p>
+    <p id="guessesSoFar-text"></p>
+  </div>
 
 
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Andrew's Portfolio...sorta</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html">Home</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="https://www.w3schools.com/tags/att_img_width.asp">Action</a></li>
-                <li><a href="https://www.w3schools.com/tags/att_img_width.asp">Another action</a></li>
-                <li><a href="https://www.w3schools.com/tags/att_img_width.asp">Something else here</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
-          </ul>
-         
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+  <script type="text/javascript">
 
-    <div class="container">
-
-      <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        
-        <section class="main-section">
-            <h1>Andrew's Page!</h1>
-            <img src="http://images1.fanpop.com/images/photos/1900000/Puppy-3-dogs-1993798-1024-768.jpg" class="img-fluid" alt="Responsive image">
-            <p>Yeah, we're here. We out here learning how to code. Am I doing it correctly? It shall remain to be seen.</p>
-    
-            <p>Admire the bootstrap. oh my it's wonderful. Admire the puppy.</p>
+    // Creates an array that lists out all of the options.
+    var computerChoices = ["a", "b","c","d","e","f","g","h","i","j","k","l","m","n", "o", "p","q","r","t","u","v","w","x","y","z", "s"];
+    // Creating variables to hold the number of wins, losses, and guessesLeft. They start at 0.
+    var wins = 0;
+    var losses = 0;
+    var guessesLeft = 9;
+    var guessesSoFar = 0;
+    // Create variables that hold references to the places in the HTML where we want to display things.
+    var directionsText = document.getElementById("directions-text");
+    var userChoiceText = document.getElementById("userchoice-text");
+    var computerChoiceText = document.getElementById("computerchoice-text");
+    var winsText = document.getElementById("wins-text");
+    var lossesText = document.getElementById("losses-text");
+    var guessesLeftText = document.getElementById("guessesLeft-text");
+    var guessesSoFarText = document.getElementById("guessesSoFar-text");
+    // This function is run whenever the user presses a key.
+    var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+       
       
-            <p>Such cute. So fluffy. So beautiful.</p>
-  
-            <a class="btn btn-lg btn-primary" href="https://www.youtube.com/watch?v=nlYlNF30bVg" role="button">A facinating video, rich in intrigue and drama...CHECK IT OUT!&raquo;</a>
-        </p>
-        
-        </section>
-      </div>
+    document.onkeyup = function(event) {
+      // Determines which key was pressed.
+      var userGuess = event.key;
+      var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+      // Randomly chooses a choice from the options array. This is the Computer's guess.
+     
+      // This logic determines the outcome of the game (win/loss/tie), and increments the appropriate number
+      winsText.textContent = "wins: " + wins;
+        lossesText.textContent = "losses: " + losses;
+        guessesLeftText.textContent = "guesses left: " + guessesLeft;
+        guessesSoFarText.textContent = "guesses so far: " + guessesSoFar
+     
+      if (userGuess===computerGuess){
+          wins++;
+        } else if (userGuess!==computerGuess) {
 
-    </div> <!-- /container -->
-      
-    
-      <footer>
-        <div class="container">
-          Andrew (friken) Bliach &copy; 
-        </div>
-      </footer>
+          guessesSoFar++;
+          guessesLeft--;
+        }
+
+      while (guessesLeft < 1){
+        losses++;
+        guessesLeft = 9;
+        } 
+        // Hide the directions
+        userChoiceText.textContent = "You chose: " + userGuess;
+        computerChoiceText.textContent = "The computer chose: " + computerGuess;
+        // Display the user and computer guesses, and wins/losses/guessesLeft.
+        
+    };
+  </script>
 
 </body>
+
 </html>
