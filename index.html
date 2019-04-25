@@ -1,77 +1,46 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-us">
 
 <head>
   <meta charset="UTF-8">
-  <title>Jacascript Homework</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Andrew Bliach</title>
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
 <body>
 
-  <div>
-    <p id="directions-text">Guess what letter I'm thinking of!</p>
-    <p id="userchoice-text"></p>
-    <p id="computerchoice-text"></p>
-    <p id="wins-text"></p>
-    <p id="losses-text"></p>
-    <p id="guessesLeft-text"></p>
-    <p id="guessesSoFar-text"></p>
+  <header id="masthead">
+    <div class="container">
+      <a href="index.html" id="logo">Andrew Bliach</a>
+      <nav>
+        <a href="index.html">About</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <div id="main-container" class="container">
+    <section class="main-section">
+      <h1>About Me</h1>
+
+
+      <p>This site is a reflection of my coding abilities.</p>
+
+      <p>Besides studying coding now, I prevously studied philosophy at Rutgers, a !very employable skill...</p>
+
+      <p>To be frank, that is my main motivation. Followed by the want to do something everyday, for work or otherwise, that's enjoyable.</p>
+
+    </section>
+
   </div>
 
-
-  <script type="text/javascript">
-
-    // Creates an array that lists out all of the options.
-    var computerChoices = ["a", "b","c","d","e","f","g","h","i","j","k","l","m","n", "o", "p","q","r","t","u","v","w","x","y","z", "s"];
-    // Creating variables to hold the number of wins, losses, and guessesLeft. They start at 0.
-    var wins = 0;
-    var losses = 0;
-    var guessesLeft = 9;
-    var guessesSoFar = 0;
-    // Create variables that hold references to the places in the HTML where we want to display things.
-    var directionsText = document.getElementById("directions-text");
-    var userChoiceText = document.getElementById("userchoice-text");
-    var computerChoiceText = document.getElementById("computerchoice-text");
-    var winsText = document.getElementById("wins-text");
-    var lossesText = document.getElementById("losses-text");
-    var guessesLeftText = document.getElementById("guessesLeft-text");
-    var guessesSoFarText = document.getElementById("guessesSoFar-text");
-    // This function is run whenever the user presses a key.
-    var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-       
-      
-    document.onkeyup = function(event) {
-      // Determines which key was pressed.
-      var userGuess = event.key;
-      var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-      // Randomly chooses a choice from the options array. This is the Computer's guess.
-     
-      // This logic determines the outcome of the game (win/loss/tie), and increments the appropriate number
-      winsText.textContent = "wins: " + wins;
-        lossesText.textContent = "losses: " + losses;
-        guessesLeftText.textContent = "guesses left: " + guessesLeft;
-        guessesSoFarText.textContent = "guesses so far: " + guessesSoFar
-     
-      if (userGuess===computerGuess){
-          wins++;
-        } else if (userGuess!==computerGuess) {
-
-          guessesSoFar++;
-          guessesLeft--;
-        }
-
-      while (guessesLeft < 1){
-        losses++;
-        guessesLeft = 9;
-        } 
-        // Hide the directions
-        userChoiceText.textContent = "You chose: " + userGuess;
-        computerChoiceText.textContent = "The computer chose: " + computerGuess;
-        // Display the user and computer guesses, and wins/losses/guessesLeft.
-        
-    };
-  </script>
-
+  <footer>
+    <div class="container">
+      Copyright &copy; 
+    </div>
+  </footer>
 </body>
 
 </html>
